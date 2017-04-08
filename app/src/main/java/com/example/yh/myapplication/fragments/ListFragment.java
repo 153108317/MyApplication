@@ -53,13 +53,16 @@ public class ListFragment extends BasicFragment implements IView<TestBean>{
         textviewlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((BasicActivity) getActivity()).openActivity(PicturesActivity.class,null);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("test",testBean);
+                ((BasicActivity) getActivity()).openActivity(PicturesActivity.class,bundle);
             }
         });
     }
-
+private TestBean testBean;
     @Override
     public void getBean(TestBean v) {
+        testBean=testBean;
         mListView.setAdapter(new TestAdapter(v.getList(),R.layout.listview_item));
 
     }

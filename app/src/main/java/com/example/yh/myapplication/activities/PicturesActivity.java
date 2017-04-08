@@ -46,6 +46,7 @@ public class PicturesActivity extends BasicActivity {
         listFragments.add(new PictureFragment1());
         listFragments.add(new PictureFragment1());
         showFragment(listFragments.get(0), R.id.mframelayout);
+        listFragments.get(0).setArguments(getIntent().getExtras());
         for (int i = 0; i < tabText.length; i++) {
             View view = View.inflate(this, R.layout.tab_item, null);
 
