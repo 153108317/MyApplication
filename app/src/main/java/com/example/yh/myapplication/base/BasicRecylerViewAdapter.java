@@ -14,7 +14,7 @@ import java.util.List;
 
 public class BasicRecylerViewAdapter<T> extends RecyclerView.Adapter {
     private List<T> list;
-    public BasicRecylerViewAdapter(List<T> list){
+    public BasicRecylerViewAdapter(List<T> list){///
 
     }
     @Override
