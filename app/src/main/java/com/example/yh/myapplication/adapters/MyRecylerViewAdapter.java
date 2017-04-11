@@ -7,7 +7,7 @@ import com.example.yh.myapplication.MyApplication;
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicRecylerViewAdapter;
 import com.example.yh.myapplication.base.RecylerViewHolder;
-import com.example.yh.myapplication.result.TestBean;
+import com.example.yh.myapplication.entities.TestBean;
 
 import java.util.List;
 

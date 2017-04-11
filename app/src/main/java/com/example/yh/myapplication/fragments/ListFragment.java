@@ -14,7 +14,7 @@ import android.widget.ListView;
         import com.example.yh.myapplication.base.BasicActivity;
         import com.example.yh.myapplication.base.BasicFragment;
 import com.example.yh.myapplication.presenter.PresenterTestBean;
-import com.example.yh.myapplication.result.TestBean;
+import com.example.yh.myapplication.entities.TestBean;
 import com.example.yh.myapplication.views.IView;
 
         import butterknife.BindView;

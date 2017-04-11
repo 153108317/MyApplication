@@ -1,6 +1,7 @@
-package com.example.yh.myapplication.result;
+package com.example.yh.myapplication.entities;
 
 import com.example.yh.myapplication.base.BasicResult;
+import com.example.yh.myapplication.result.Weatherinfo;
 
 import java.util.List;
 

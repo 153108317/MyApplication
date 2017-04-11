@@ -7,7 +7,7 @@ import com.example.yh.myapplication.MyApplication;
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicAdapter;
 import com.example.yh.myapplication.base.Holder;
-import com.example.yh.myapplication.result.TestBean;
+import com.example.yh.myapplication.entities.TestBean;
 import com.example.yh.myapplication.utils.Log;
 
 import java.util.List;

@@ -18,7 +18,10 @@ import java.util.List;
 public abstract class BasicRecylerViewAdapter<T> extends RecyclerView.Adapter <RecylerViewHolder>{
     private List<T> list;
     private int itmemLayoutId;
-    public BasicRecylerViewAdapter(List<T> list,int itmemLayoutId){///
+    public BasicRecylerViewAdapter(List<T> list,int itmemLayoutId){
+        if(list==null){
+            throw  new NullPointerException("BasicRecylerViewAdapter :list 为空");
+        }
         this.list=list;
         this.itmemLayoutId=itmemLayoutId;
     }

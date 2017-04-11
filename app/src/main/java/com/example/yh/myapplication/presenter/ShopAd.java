@@ -3,8 +3,7 @@ package com.example.yh.myapplication.presenter;
 import com.android.volley.VolleyError;
 import com.example.yh.myapplication.interfaces.HttpCallBack;
 import com.example.yh.myapplication.network.HttpTask;
-import com.example.yh.myapplication.network.HttpUrls;
-import com.example.yh.myapplication.result.TestBean;
+import com.example.yh.myapplication.entities.TestBean;
 import com.example.yh.myapplication.views.MyUser;
 
 /**
@@ -26,16 +25,11 @@ public class ShopAd implements HttpCallBack<TestBean>{
         }
     }
 
-    @Override
-    public void onSuccess(TestBean result) {
-        if(myUser!=null)
-            myUser.getUser(result.toString());
-    }
-
 
     @Override
     public void onSuccess(TestBean result, int typeId) {
-
+        if(myUser!=null)
+            myUser.getUser(result.toString());
     }
 
     @Override

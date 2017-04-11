@@ -8,9 +8,8 @@ import com.example.yh.myapplication.base.BasicResult;
  */
 
 public interface HttpCallBack<T extends BasicResult> {
-    void onSuccess(
-            T result
-    );
+    /***
+     * @param typeId 默认0*/
     void onSuccess(
             T result,int typeId
     );
