@@ -7,4 +7,5 @@ package com.example.yh.myapplication.network;
 public class HttpUrls {
     public static final String BASEURL="http://wap.huoguo.com";
     public final static String INDEXINFO = BASEURL + "/services/jsonIndexInfo.do";
+    public final static String PICTURESURL="http://gank.io/api/data/福利/10/";
 }

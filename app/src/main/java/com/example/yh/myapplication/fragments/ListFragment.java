@@ -14,7 +14,7 @@ import android.widget.ListView;
         import com.example.yh.myapplication.base.BasicActivity;
         import com.example.yh.myapplication.base.BasicFragment;
 import com.example.yh.myapplication.presenter.PresenterTestBean;
-import com.example.yh.myapplication.result.TestBean;
+import com.example.yh.myapplication.entities.TestBean;
 import com.example.yh.myapplication.views.IView;
 
         import butterknife.BindView;
@@ -53,13 +53,16 @@ public class ListFragment extends BasicFragment implements IView<TestBean>{
         textviewlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((BasicActivity) getActivity()).openActivity(PicturesActivity.class,null);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("test",testBean);
+                ((BasicActivity) getActivity()).openActivity(PicturesActivity.class,bundle);
             }
         });
     }
-
+private TestBean testBean;
     @Override
     public void getBean(TestBean v) {
+        testBean=testBean;
         mListView.setAdapter(new TestAdapter(v.getList(),R.layout.listview_item));
 
     }

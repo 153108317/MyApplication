@@ -4,11 +4,11 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.android.volley.VolleyError;
+import com.example.yh.myapplication.entities.TestBean;
 import com.example.yh.myapplication.interfaces.HttpCallBack;
 import com.example.yh.myapplication.interfaces.ImageCallBack;
 import com.example.yh.myapplication.network.HttpTask;
 import com.example.yh.myapplication.network.ImageLoad;
-import com.example.yh.myapplication.result.TestBean;
 import com.example.yh.myapplication.views.IView;
 
 import java.util.ArrayList;
@@ -30,9 +30,9 @@ public class PresenterTestBean {
     public void getData(String url){
         HttpTask<TestBean> httpTask=new HttpTask<TestBean>(TestBean.class);
         httpTask.setHttpCallBack(new HttpCallBack<TestBean>() {
-            @Override
-            public void onSuccess(TestBean result) {
 
+            @Override
+            public void onSuccess(TestBean result, int typeId) {
                 if(iView!=null){
                     result.setList(new ArrayList<TestBean>());
                     for (int i=0;i<10;i++){
@@ -43,11 +43,6 @@ public class PresenterTestBean {
 
                     iView.getBean(result);
                 }
-            }
-
-            @Override
-            public void onSuccess(TestBean result, int typeId) {
-
             }
 
             @Override

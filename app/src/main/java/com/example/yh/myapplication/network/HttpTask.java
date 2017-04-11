@@ -1,20 +1,17 @@
 package com.example.yh.myapplication.network;
 
-import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yh.myapplication.MyApplication;
 import com.example.yh.myapplication.base.BasicResult;
 import com.example.yh.myapplication.interfaces.HttpCallBack;
-import com.example.yh.myapplication.result.TestBean;
+import com.example.yh.myapplication.utils.Log;
 
 import org.json.JSONObject;
 
@@ -32,7 +29,7 @@ public class HttpTask<T extends BasicResult> {
     }
 
     public HttpTask(HttpCallBack callBack, Class<T> clazz) {
-        this.mHttpCallBack = mHttpCallBack;
+        this.mHttpCallBack = callBack;
         this.clazz = clazz;
     }
 
@@ -45,8 +42,8 @@ public class HttpTask<T extends BasicResult> {
             mRequestQueue = Volley.newRequestQueue(MyApplication.mApplicationContext);
 
         }
-      //  url += "?lng=126.5&lat=26.5&deviceType=3";
-        Log.e("tag", "url:" + url);
+        //  url += "?lng=126.5&lat=26.5&deviceType=3";
+        Log.e("url:" + url);
         StringRequest mStringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -70,21 +67,25 @@ public class HttpTask<T extends BasicResult> {
 
         mRequestQueue.add(mStringRequest);
     }
-    public  void getJSONObjectResult(String url){
-        RequestQueue requestQueue= Volley.newRequestQueue(MyApplication.mApplicationContext);
-        JsonObjectRequest request=new JsonObjectRequest(url,null,new Response.Listener<JSONObject>(){
+
+    public void getJSONObjectResult(String url) {
+        Log.e("url"+url);
+        RequestQueue requestQueue = Volley.newRequestQueue(MyApplication.mApplicationContext);
+        JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
+
+                Log.e(jsonObject.toString());
                 if (mHttpCallBack != null) {
-                T tt=JSON.parseObject(jsonObject.toString(),clazz);
-                mHttpCallBack.onSuccess(tt);
+                    T tt = JSON.parseObject(jsonObject.toString(), clazz);
+                    mHttpCallBack.onSuccess(tt, 0);
                 }
             }
-        },new Response.ErrorListener(){
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                if(mHttpCallBack!=null)
-                {
+                Log.e("" + volleyError.getMessage());
+                if (mHttpCallBack != null) {
                     mHttpCallBack.onError(volleyError);
                 }
             }
