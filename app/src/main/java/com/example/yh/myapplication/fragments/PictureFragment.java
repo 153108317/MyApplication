@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.yh.myapplication.R;
-import com.example.yh.myapplication.adapters.MRecylerViewAdapter;
+import com.example.yh.myapplication.adapters.MyRecylerViewAdapter;
 import com.example.yh.myapplication.base.BasicFragment;
 import com.example.yh.myapplication.result.TestBean;
 
@@ -49,6 +49,7 @@ public class PictureFragment extends BasicFragment {
             list.add(testBean);
         }
     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(new MRecylerViewAdapter(list,R.layout.listview_item));
+//        mRecyclerView.setAdapter(new MRecylerViewAdapter(list,R.layout.listview_item));
+        mRecyclerView.setAdapter(new MyRecylerViewAdapter(list,R.layout.listview_item));
     }
 }

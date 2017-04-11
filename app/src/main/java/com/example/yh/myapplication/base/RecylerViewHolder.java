@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.yh.myapplication.MyApplication;
-
 /**
  * Fixme
  * Author: YH
@@ -17,23 +15,28 @@ import com.example.yh.myapplication.MyApplication;
  */
 
 public class RecylerViewHolder extends RecyclerView.ViewHolder {
-    public RecylerViewHolder(View view) {
-        super(view);
-    }
-    private int mLayoutId;
+//    public RecylerViewHolder(View view) {
+//        super(view);
+//    }
+  //  private int mLayoutId;
     private View mView;
-    private int mPosition;
+  //  private int mPosition;
     private SparseArray<View> mViews;
 
-    private RecylerViewHolder(int layoutId, View view, int position) {
+    public RecylerViewHolder( View view) {
         super(view);
-        mLayoutId = layoutId;
-        mView = View.inflate(MyApplication.mApplicationContext, layoutId, null);
+      //  mLayoutId = layoutId;
+        mView = view;//View.inflate(MyApplication.mApplicationContext, layoutId, null);
         mViews = new SparseArray<>();
         mView.setTag(this);
-        mPosition = position;
+     //   mPosition = 0;
     }
-
+    public TextView getTextView(int viewId){
+        if(mViews.get(viewId)==null){
+            mViews.put(viewId, this.mView.findViewById(viewId));
+        }
+        return (TextView) mViews.get(viewId);
+    }
     public void setText(int textId, int stringId) {
         TextView textView = (TextView) mViews.get(textId);
         if (textView == null) {

@@ -1,7 +1,10 @@
 package com.example.yh.myapplication.base;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.yh.myapplication.MyApplication;
 
 import java.util.List;
 
@@ -12,23 +15,27 @@ import java.util.List;
  * Copyright (c) 2016 d2cmall. All rights reserved.
  */
 
-public class BasicRecylerViewAdapter<T> extends RecyclerView.Adapter {
+public abstract class BasicRecylerViewAdapter<T> extends RecyclerView.Adapter <RecylerViewHolder>{
     private List<T> list;
-    public BasicRecylerViewAdapter(List<T> list){///
-
+    private int itmemLayoutId;
+    public BasicRecylerViewAdapter(List<T> list,int itmemLayoutId){///
+        this.list=list;
+        this.itmemLayoutId=itmemLayoutId;
     }
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public RecylerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        RecylerViewHolder recylerViewHolder=new RecylerViewHolder(View.inflate(MyApplication.mApplicationContext,itmemLayoutId,null));
+        return recylerViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(RecylerViewHolder holder, int position) {
+        onConvert( holder,  position,list.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list==null?0:list.size();
     }
+    protected abstract  void onConvert(RecylerViewHolder holder, int position,T t);
 }
