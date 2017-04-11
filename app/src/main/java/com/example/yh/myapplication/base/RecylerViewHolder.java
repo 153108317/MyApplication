@@ -15,49 +15,34 @@ import android.widget.TextView;
  */
 
 public class RecylerViewHolder extends RecyclerView.ViewHolder {
-//    public RecylerViewHolder(View view) {
-//        super(view);
-//    }
-  //  private int mLayoutId;
-    private View mView;
-  //  private int mPosition;
     private SparseArray<View> mViews;
 
-    public RecylerViewHolder( View view) {
+    public RecylerViewHolder(View view) {
         super(view);
-      //  mLayoutId = layoutId;
-        mView = view;//View.inflate(MyApplication.mApplicationContext, layoutId, null);
         mViews = new SparseArray<>();
-        mView.setTag(this);
-     //   mPosition = 0;
+        itemView.setTag(this);
     }
-    public TextView getTextView(int viewId){
-        if(mViews.get(viewId)==null){
-            mViews.put(viewId, this.mView.findViewById(viewId));
+
+    private void addChildView(int viewId) {
+        if (mViews.get(viewId) == null) {
+            mViews.put(viewId, itemView.findViewById(viewId));
         }
+    }
+
+    public TextView getTextView(int viewId) {
+        addChildView(viewId);
         return (TextView) mViews.get(viewId);
     }
-    public void setText(int textId, int stringId) {
-        TextView textView = (TextView) mViews.get(textId);
-        if (textView == null) {
-            textView = (TextView) mView.findViewById(textId);
-            mViews.put(textId, textView);
 
-        }
-        textView.setText(stringId);
+    public void setText(int textId, int stringId) {
+        addChildView(textId);
+        ((TextView) mViews.get(textId)).setText(stringId);
     }
 
     public void setText(int textId, String content) {
-        TextView textView = (TextView) mViews.get(textId);
-        if (textView == null) {
-            textView = (TextView) mView.findViewById(textId);
-            mViews.put(textId, textView);
-
-        }
-
+        addChildView(textId);
         if (content != null)
-            textView.setText(content);
-
+            ((TextView) mViews.get(textId)).setText(content);
     }
 
     public void setImage(int imageViewId, int resId) {
@@ -66,32 +51,23 @@ public class RecylerViewHolder extends RecyclerView.ViewHolder {
     }
 
     private ImageView getImageView(int imageViewId) {
-        ImageView imageView = (ImageView) mViews.get(imageViewId);
-        if (imageView == null) {
-            imageView = (ImageView) mView.findViewById(imageViewId);
-            mViews.put(imageViewId, imageView);
-        }
-        return imageView;
+        addChildView(imageViewId);
+        return (ImageView) mViews.get(imageViewId);
     }
 
     public void setImage(int imageViewId, Bitmap bitmap) {
-        ImageView imageView = getImageView(imageViewId);
-        if(bitmap!=null)
-            imageView.setImageBitmap(bitmap);
+        if (bitmap != null)
+            getImageView(imageViewId).setImageBitmap(bitmap);
     }
 
 
     public View getView(int viewId) {
-        View view = mViews.get(viewId);
-        if (view == null) {
-            view = mView.findViewById(viewId);
-            mViews.put(viewId, view);
-        }
-        return view;
+        addChildView(viewId);
+        return mViews.get(viewId);
     }
 
     public View getRootView() {
-        return mView;
+        return itemView;
     }
 
 }

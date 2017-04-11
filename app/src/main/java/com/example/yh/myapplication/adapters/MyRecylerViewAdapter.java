@@ -24,7 +24,9 @@ public class MyRecylerViewAdapter extends BasicRecylerViewAdapter<TestBean>{
     }
     @Override
     protected void onConvert(RecylerViewHolder holder, int position,TestBean testBean) {
-        holder.getTextView(R.id.mtextview).setText(testBean.getTitle());
+
+       // holder.getTextView(R.id.mtextview).setText(testBean.getTitle());
+        holder.setText(R.id.mtextview,testBean.getTitle());
         Glide.with(MyApplication.mApplicationContext).load(testBean.getImageurl()).into((ImageView) holder.getView(R.id.mimageview));
     }
 
