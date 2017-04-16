@@ -36,7 +36,7 @@ public class PicturesActivity extends BasicActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);///
+        super.onCreate(savedInstanceState);////YY
         setContentView(R.layout.activity_pictures);
         ButterKnife.bind(this);
         int e = R.drawable.select_state;
