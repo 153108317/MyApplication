@@ -1,6 +1,11 @@
 package com.example.yh.myapplication.fragments;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -53,7 +58,16 @@ public class MyFragment extends BasicFragment implements IView<TestBean>{
         presenterTestBean.setImageView(new IView<Bitmap>() {
             @Override
             public void getBean(Bitmap v) {
-                imageView.setImageBitmap(v);
+               Drawable backgroud= imageView.getBackground();
+                Resources res=getResources();
+              Bitmap f=  BitmapFactory.decodeResource(res,R.mipmap.ic_launcher);
+                Bitmap bitmap=Bitmap.createBitmap(imageView.getWidth(),imageView.getHeight(), Bitmap.Config.ARGB_8888);
+                Canvas canvas=new Canvas(bitmap);
+                canvas.drawBitmap(f,new Matrix(),null);
+                canvas.drawBitmap(v,100,100,null);
+                f.recycle();
+                imageView.setImageBitmap(bitmap);
+
 
             }
         });
