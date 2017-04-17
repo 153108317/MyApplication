@@ -136,7 +136,10 @@ private static String mResult="{\n" +
 
             @Override
             public void onSuccess(PictureResult result, int typeId) {
+                PictureResult  mresult=JSON.parseObject(mResult,PictureResult.class);
+
                 result=JSON.parseObject(mResult,PictureResult.class);
+                result.getResults().addAll(mresult.getResults());
                 if(iView!=null)
                     iView.getBean(result);
             }

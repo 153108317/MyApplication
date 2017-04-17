@@ -20,20 +20,20 @@ import java.util.List;
  * Copyright (c) 2016 d2cmall. All rights reserved.
  */
 
-public class MyRecylerViewAdapter extends BasicRecylerViewAdapter<TestBean>{
-    public MyRecylerViewAdapter(List<TestBean> list,int itemLayoutId){
-        super(list,itemLayoutId);
+public class MyRecylerViewAdapter extends BasicRecylerViewAdapter<TestBean> {
+    public MyRecylerViewAdapter(List<TestBean> list, int itemLayoutId) {
+        super(list, itemLayoutId);
     }
+
     @Override
     protected void onConvert(RecylerViewHolder holder, final int position, TestBean testBean) {
-holder.getRootView().setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Utils.Toast("pisition"+position);
-    }
-});
-       // holder.getTextView(R.id.mtextview).setText(testBean.getTitle());
-        holder.setText(R.id.mtextview,testBean.getTitle());
+        holder.getRootView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.Toast("pisition" + position);
+            }
+        });
+        holder.setText(R.id.mtextview, testBean.getTitle());
         Glide.with(MyApplication.mApplicationContext).load(testBean.getImageurl()).into((ImageView) holder.getView(R.id.mimageview));
     }
 
