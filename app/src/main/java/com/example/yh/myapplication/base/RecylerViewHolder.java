@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.yh.myapplication.MyApplication;
+
 /**
  * Fixme
  * Author: YH
@@ -48,6 +51,10 @@ public class RecylerViewHolder extends RecyclerView.ViewHolder {
     public void setImage(int imageViewId, int resId) {
         ImageView imageView = getImageView(imageViewId);
         imageView.setImageResource(resId);
+    } public void setImage(int imageViewId, String imageUrl) {
+        Glide.with(MyApplication.mApplicationContext)
+                .load(imageUrl)
+                .into(getImageView(imageViewId) );
     }
 
     private ImageView getImageView(int imageViewId) {

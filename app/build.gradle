@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
+
     defaultConfig {
         applicationId "com.example.yh.myapplication"
         minSdkVersion 15
@@ -15,8 +16,22 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        //    signingConfig signingConfigs.config
+        }
+       debug {
+//            minifyEnabled false
+           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.config
         }
     }
+//    signingConfigs {
+//        config {
+//            keyAlias 'yh'
+//            keyPassword '123456'
+//            storeFile file(  'mykey.jks')
+//            storePassword '123456'
+//        }
+//    }
 }
 
 dependencies {

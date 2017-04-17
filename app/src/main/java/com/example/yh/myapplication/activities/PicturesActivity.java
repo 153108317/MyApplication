@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicActivity;
+import com.example.yh.myapplication.fragments.PicTureFragment2;
 import com.example.yh.myapplication.fragments.PictureFragment;
 import com.example.yh.myapplication.fragments.PictureFragment1;
 
@@ -44,7 +45,7 @@ public class PicturesActivity extends BasicActivity {
         listFragments = new ArrayList<>();
         listFragments.add(new PictureFragment());
         listFragments.add(new PictureFragment1());
-        listFragments.add(new PictureFragment1());
+        listFragments.add(new PicTureFragment2());
         showFragment(listFragments.get(0), R.id.mframelayout);
         listFragments.get(0).setArguments(getIntent().getExtras());
         for (int i = 0; i < tabText.length; i++) {

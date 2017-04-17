@@ -14,6 +14,10 @@ import java.util.List;
 
 public class PictureResult extends BasicResult {
     private List<PictureBean> results;
+public PictureResult(){}
+    public PictureResult(List<PictureBean> results) {
+        this.results = results;
+    }
 
     public List<PictureBean> getResults() {
         return results;

@@ -19,7 +19,7 @@ public class PictureBean implements Serializable{
     private String  url;
     private String  used;
     private String  who;
-
+    public PictureBean(){}
     public PictureBean(String _id, String createdAt, String desc, String publishedAt, String source, String type, String url, String used, String who) {
         this._id = _id;
         this.createdAt = createdAt;
