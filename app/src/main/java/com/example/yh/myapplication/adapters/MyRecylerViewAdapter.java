@@ -1,5 +1,6 @@
 package com.example.yh.myapplication.adapters;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -8,6 +9,7 @@ import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicRecylerViewAdapter;
 import com.example.yh.myapplication.base.RecylerViewHolder;
 import com.example.yh.myapplication.entities.TestBean;
+import com.example.yh.myapplication.utils.Utils;
 
 import java.util.List;
 
@@ -23,8 +25,13 @@ public class MyRecylerViewAdapter extends BasicRecylerViewAdapter<TestBean>{
         super(list,itemLayoutId);
     }
     @Override
-    protected void onConvert(RecylerViewHolder holder, int position,TestBean testBean) {
-
+    protected void onConvert(RecylerViewHolder holder, final int position, TestBean testBean) {
+holder.getRootView().setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Utils.Toast("pisition"+position);
+    }
+});
        // holder.getTextView(R.id.mtextview).setText(testBean.getTitle());
         holder.setText(R.id.mtextview,testBean.getTitle());
         Glide.with(MyApplication.mApplicationContext).load(testBean.getImageurl()).into((ImageView) holder.getView(R.id.mimageview));

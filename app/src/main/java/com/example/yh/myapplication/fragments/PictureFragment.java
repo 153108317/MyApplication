@@ -2,7 +2,7 @@ package com.example.yh.myapplication.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +34,8 @@ public class PictureFragment extends BasicFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.fragment_picture,container,false);
         ButterKnife.bind(this,view);
+
+
         return view;
     }
 
@@ -44,13 +46,15 @@ public class PictureFragment extends BasicFragment {
         list=new ArrayList<>();
          String imageUrl="http://www.baidu.com/img/bdlogo.png";
         String url="http://gank.io/api/data/福利/10/1";
-        for (int i=0;i<10;i++){
+        for (int i=0;i<25;i++){
             TestBean testBean=new TestBean();
             testBean.setTitle("title"+i);
             testBean.setImageurl(imageUrl);
             list.add(testBean);
         }
-    mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+   // mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+      //  GridLayoutManager mLayoutManager=new GridLayoutManager(getActivity(),3,GridLayoutManager.VERTICAL,false);//设置为一个3列的纵向网格布局
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3,GridLayoutManager.VERTICAL,false));
 //        mRecyclerView.setAdapter(new MRecylerViewAdapter(list,R.layout.listview_item));
         mMyRecylerViewAdapter=new MyRecylerViewAdapter(list,R.layout.listview_item);
         mRecyclerView.setAdapter(mMyRecylerViewAdapter);

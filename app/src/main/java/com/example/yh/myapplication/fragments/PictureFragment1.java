@@ -47,7 +47,9 @@ public class PictureFragment1 extends BasicFragment implements IView<PictureResu
         super.onActivityCreated(savedInstanceState);
         mList=new ArrayList<>();
         mPicture1RecylerViewAdapter=new Picture1RecylerViewAdapter(mList,R.layout.reycelerview_picture1_item);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        LinearLayoutManager manager=new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mPicture1RecylerViewAdapter);
         GetPictureApi.getPictureBeans(HttpUrls.PICTURESURL+1,0,this);
     }

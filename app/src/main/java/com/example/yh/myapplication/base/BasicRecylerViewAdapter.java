@@ -28,11 +28,14 @@ public abstract class BasicRecylerViewAdapter<T> extends RecyclerView.Adapter <R
     @Override
     public RecylerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecylerViewHolder recylerViewHolder=new RecylerViewHolder(View.inflate(MyApplication.mApplicationContext,itmemLayoutId,null));
+       View v= View.inflate(MyApplication.mApplicationContext,itmemLayoutId,null);
+
         return recylerViewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecylerViewHolder holder, int position) {
+
         onConvert( holder,  position,list.get(position));
     }
 

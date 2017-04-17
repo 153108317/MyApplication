@@ -78,6 +78,7 @@ public class HttpTask<T extends BasicResult> {
                 Log.e(jsonObject.toString());
                 if (mHttpCallBack != null) {
                     T tt = JSON.parseObject(jsonObject.toString(), clazz);
+                    Log.e(tt.toString());
                     mHttpCallBack.onSuccess(tt, 0);
                 }
             }
