@@ -6,8 +6,10 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
     android:text="fragmentpicture1"/>
-    <android.support.v4.widget.SwipeRefreshLayout android:layout_width="match_parent"
-                                                  android:layout_height="match_parent">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
     <android.support.v7.widget.RecyclerView
