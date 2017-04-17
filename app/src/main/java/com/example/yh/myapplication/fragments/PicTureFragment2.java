@@ -1,7 +1,9 @@
 package com.example.yh.myapplication.fragments;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -31,9 +33,11 @@ import butterknife.ButterKnife;
  * Copyright (c) 2016 d2cmall. All rights reserved.
  */
 
-public class PicTureFragment2 extends BasicFragment implements IView<PictureResult> {
+public class PicTureFragment2 extends BasicFragment implements IView<PictureResult>,SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.mrecylerview)
     RecyclerView mRecyclerView;
+    @BindView(R.id.swiperefreshLayout)
+    SwipeRefreshLayout mSwiperefreshLayout;
     private Picture1RecylerViewAdapter mPicture1RecylerViewAdapter;
     private List<PictureBean> mList;
     private int orientation= LinearLayoutManager.HORIZONTAL;
@@ -58,6 +62,12 @@ public class PicTureFragment2 extends BasicFragment implements IView<PictureResu
 
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mPicture1RecylerViewAdapter);
+        mSwiperefreshLayout.setOnRefreshListener(this);
+       Resources res= getResources();
+        mSwiperefreshLayout.setColorSchemeColors(res.getColor(R.color.colorAccent),
+                res.getColor(R.color.colorPrimaryDark),
+                res.getColor(R.color.colorgray),
+                res.getColor(R.color.colorPrimary));
         GetPictureApi.getPictureBeans(HttpUrls.PICTURESURL+1,0,this);
     }
 
@@ -67,7 +77,13 @@ public class PicTureFragment2 extends BasicFragment implements IView<PictureResu
             mList.addAll(v.getResults());
             mPicture1RecylerViewAdapter.notifyDataSetChanged();
             //  mPicture1RecylerViewAdapter.notify();
+            mSwiperefreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        GetPictureApi.getPictureBeans(HttpUrls.PICTURESURL+1,0,this);
     }
 }
 

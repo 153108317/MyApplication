@@ -67,24 +67,14 @@ public class PictureFragment1 extends BasicFragment implements IView<PictureResu
             mList.addAll(v.getResults());
             mPicture1RecylerViewAdapter.notifyDataSetChanged();
           //  mPicture1RecylerViewAdapter.notify();
+            mSwiperefreshLayout.setRefreshing(false);
         }
     }
 
     @Override
     public void onRefresh() {
         Log.e("onrefresh");
-        new Thread(
-        )
-        {
-            @Override
-            public void run() {
-                super.run();
-                try {
-                   sleep(3000l);
-                    mSwiperefreshLayout.setRefreshing(false);
-                }catch (Exception e){}
+        GetPictureApi.getPictureBeans(HttpUrls.PICTURESURL+1,0,this);
 
-            }
-        }.start();
     }
 }
