@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 
 /**
  * Fixme
- * Author: PengHong
+ * Author: yh
  * Date: 2017/04/17 15:29
  * Copyright (c) 2016 d2cmall. All rights reserved.
  */
@@ -36,6 +36,7 @@ import butterknife.ButterKnife;
 public class PicTureFragment2 extends BasicFragment implements IView<PictureResult>,SwipeRefreshLayout.OnRefreshListener {
     @BindView(R.id.mrecylerview)
     RecyclerView mRecyclerView;
+    /**/
     @BindView(R.id.swiperefreshLayout)
     SwipeRefreshLayout mSwiperefreshLayout;
     private Picture1RecylerViewAdapter mPicture1RecylerViewAdapter;

@@ -18,6 +18,8 @@ import com.example.yh.myapplication.utils.Log;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
+import de.greenrobot.event.Subscribe;
+import de.greenrobot.event.ThreadMode;
 
 public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedChangeListener {
     @BindView(R.id.home_radiobutton)
@@ -50,7 +52,10 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
     protected void addDataAgain() {
 
     }
-
+    @Subscribe(threadMode = ThreadMode.MainThread)
+public void helloSomeOne(MyEvent myEvent){
+Log.e(myEvent.getMsg());
+}
     private void showFragment(int index) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
