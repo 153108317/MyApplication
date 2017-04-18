@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.yh.myapplication.Event.MyEvent;
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicActivity;
 import com.example.yh.myapplication.fragments.PicTureFragment2;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 /**
  * Fixme
@@ -76,6 +78,17 @@ public class PicturesActivity extends BasicActivity {
                 }
             });
         }
+
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        EventBus.getDefault().post(new MyEvent("这是PicuresActivity传回的消息"));
+    }
+
+    @Override
+    protected void addDataAgain() {
 
     }
 }

@@ -20,9 +20,10 @@ import java.util.List;
  * Created by yh on 2017/3/29.
  */
 
-public class BasicActivity extends FragmentActivity implements View.OnClickListener {
+public abstract class BasicActivity extends FragmentActivity implements View.OnClickListener {
     protected List<BasicFragment> listFragments;
     public BasicActivity mBasicActivity;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +39,6 @@ public class BasicActivity extends FragmentActivity implements View.OnClickListe
     public void setContentView(int layoutId) {
         ViewStub stubtitle = (ViewStub) findViewById(R.id.viewstub_titlebar);
         ViewStub stubcontent = (ViewStub) findViewById(R.id.viewstub_content);
-
         stubtitle.setLayoutResource(R.layout.titlebar);
         stubtitle.inflate();
         stubcontent.setLayoutResource(layoutId);
@@ -47,8 +47,6 @@ public class BasicActivity extends FragmentActivity implements View.OnClickListe
         mImageback.setOnClickListener(this);
         mImageviewmsg.setOnClickListener(this);
         stubcontent.inflate();
-
-
     }
 
     public void openActivity(Class<? extends Activity> activity, Bundle bundle) {
@@ -58,7 +56,8 @@ public class BasicActivity extends FragmentActivity implements View.OnClickListe
         }
         startActivity(intent);
     }
-
+    /**在此方法中重新加载数据*/
+    protected abstract void addDataAgain();
     protected void showFragment(BasicFragment fragment, int rootGroupId) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if (listFragments != null) {
@@ -96,6 +95,7 @@ public class BasicActivity extends FragmentActivity implements View.OnClickListe
                 break;
             case R.id.net_errorId:
                 mLinearLayoutNetError.setVisibility(View.GONE);
+                addDataAgain();
                 break;
 
         }

@@ -5,15 +5,19 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.example.yh.myapplication.Event.MyEvent;
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicActivity;
 import com.example.yh.myapplication.fragments.HomeFragment;
 import com.example.yh.myapplication.fragments.ListFragment;
 import com.example.yh.myapplication.fragments.MyFragment;
+import com.example.yh.myapplication.utils.Log;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedChangeListener {
     @BindView(R.id.home_radiobutton)
@@ -40,6 +44,10 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
 //        showFragment( 1);
 //        showFragment( 2);
 
+        EventBus.getDefault().register(this);
+    }
+    @Override
+    protected void addDataAgain() {
 
     }
 
@@ -70,12 +78,18 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
                     }else{
                         ft.show(myFragment);
                     }
-                    break;
+                  break;
             }
 
         ft.commit();
     }
+    public void onEventMainThread(MyEvent event) {
 
+        String msg = "onEventMainThread收到了消息：" + event.getMsg();
+        Log.e( msg);
+
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
 //    @OnClick({R.id.home_radiobutton, R.id.list_radiobutton, R.id.my_radiobutton})
 //    public void myclick(View v) {
 //    }
@@ -91,6 +105,12 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
             ft.hide(myFragment);
         }
         ft.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
