@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="stylestring"><Data><![CDATA[ <font color="#fd5562">我是文字</font>%s<font color="#fd5562">我是文字</font> ]]></Data>%s</string>
+    <string name="label_topical_name"><Data><![CDATA[ <font color="#fd5562">[主推]</font> ]]></Data>%s</string>
 </resources>

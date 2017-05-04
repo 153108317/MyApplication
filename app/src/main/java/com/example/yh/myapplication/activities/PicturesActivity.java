@@ -81,6 +81,7 @@ public class PicturesActivity extends BasicActivity {
 
     }
 
+
     @Override
     public void finish() {
         super.finish();

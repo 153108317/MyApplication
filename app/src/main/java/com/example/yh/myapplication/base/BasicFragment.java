@@ -14,6 +14,9 @@ import android.util.Log;
 public class BasicFragment extends Fragment {
     private static final String HIDESTATE="fragmenthidestate";
     private int addCount;
+    public BasicActivity getBasicActivity(){
+        return (BasicActivity)super.getActivity();
+    }
 
     public int getAddCount() {
         return addCount;

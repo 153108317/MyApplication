@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.yh.myapplication.R;
+import com.example.yh.myapplication.activities.DetailActivity;
 import com.example.yh.myapplication.adapters.MyRecylerViewAdapter;
 import com.example.yh.myapplication.base.BasicFragment;
 import com.example.yh.myapplication.entities.TestBean;
@@ -18,6 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Fixme
@@ -29,6 +32,7 @@ import butterknife.ButterKnife;
 public class PictureFragment extends BasicFragment {
     @BindView(R.id.mrecylerview)
     RecyclerView mRecyclerView;
+    @BindView(R.id.tv)TextView tv;
     private MyRecylerViewAdapter mMyRecylerViewAdapter;
 
     @Nullable
@@ -45,6 +49,7 @@ public class PictureFragment extends BasicFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         List<TestBean> //list=((TestBean)getArguments().getSerializable("test")).getList();
+
                 list = new ArrayList<>();
         String imageUrl = "http://www.baidu.com/img/bdlogo.png";
         String url = "http://gank.io/api/data/福利/10/1";
@@ -60,5 +65,13 @@ public class PictureFragment extends BasicFragment {
         mMyRecylerViewAdapter = new MyRecylerViewAdapter(list, R.layout.listview_item);
         mRecyclerView.setAdapter(mMyRecylerViewAdapter);
 
+    }
+    @OnClick({R.id.tv})public void mClick(View view){
+        switch (view.getId()){
+            case R.id.tv:
+                getBasicActivity().openActivity(DetailActivity.class,null);
+                getActivity().finish();
+                break;
+        }
     }
 }

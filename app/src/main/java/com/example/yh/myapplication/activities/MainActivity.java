@@ -1,5 +1,7 @@
 package com.example.yh.myapplication.activities;
 
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
@@ -41,13 +43,27 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mHomeRadioGroup.setOnCheckedChangeListener(this);
-
+        ActivityInfo info= null;
+        try {
+            info = getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        Log.e("info"+info);
+        if(info!=null){
+            Log.e("info.metaData"+info.metaData);
+            Log.e("info.metaData"+info.metaData.getString("yh"));
+        }
+     //   Toast.makeText(this,info.metaData.getString("yh"),Toast.LENGTH_SHORT).show();
         showFragment(0 );
 //        showFragment( 1);
 //        showFragment( 2);
 
         EventBus.getDefault().register(this);
     }
+
+
+
     @Override
     protected void addDataAgain() {
 

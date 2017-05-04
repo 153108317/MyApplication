@@ -3,6 +3,7 @@ package com.example.yh.myapplication.fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
 
 public class HomeFragment extends BasicFragment implements MyUser{
     @BindView(R.id.textview_home)TextView label;
+    @BindView(R.id.textview_home1)TextView label1;
    // private War
     @Override
     public void onAttach(Activity activity) {
@@ -46,11 +48,19 @@ public class HomeFragment extends BasicFragment implements MyUser{
             v=inflater.inflate(R.layout.fragment_home,container,false) ;
         }
         ButterKnife.bind(this,v);
+        String str=String.format(getResources().getString(R.string.stylestring),"我是添加的文字","我也是");
+        label.setText(Html.fromHtml(str));
+        str=String.format(getResources().getString(R.string.label_topical_name),"这是为什么");
+        label1.setText(Html.fromHtml(str));
         return v;// super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void getUser(String user) {
         if(user!=null)label.setText(user);
+
+
+
+
     }
 }

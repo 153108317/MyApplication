@@ -47,6 +47,11 @@ public abstract class BasicActivity extends FragmentActivity implements View.OnC
         mImageback.setOnClickListener(this);
         mImageviewmsg.setOnClickListener(this);
         stubcontent.inflate();
+
+    }
+    public void openActivity(Class<? extends Activity> activity) {
+        openActivity(activity, null);
+
     }
 
     public void openActivity(Class<? extends Activity> activity, Bundle bundle) {
@@ -56,8 +61,12 @@ public abstract class BasicActivity extends FragmentActivity implements View.OnC
         }
         startActivity(intent);
     }
-    /**在此方法中重新加载数据*/
+
+    /**
+     * 在此方法中重新加载数据
+     */
     protected abstract void addDataAgain();
+
     protected void showFragment(BasicFragment fragment, int rootGroupId) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if (listFragments != null) {
