@@ -24,6 +24,7 @@
         <activity android:name=".activities.PicturesActivity"></activity>
         <activity android:name=".activities.WebViewActivity"></activity>
         <activity android:name=".activities.DetailActivity" />
+        <activity android:name=".activities.OkHttpTestActivity"/>
 
     </application>
 

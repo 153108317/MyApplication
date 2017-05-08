@@ -1,25 +1,25 @@
 package com.example.yh.myapplication.activities;
 
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by yh on 2017/5/2.
  */
 
 public class DetailActivity extends BasicActivity {
-    @BindView(R.id.tv)TextView tv;
+    @BindView(R.id.tv)
+    TextView tv;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +29,14 @@ public class DetailActivity extends BasicActivity {
 
     }
 
+    @OnClick({R.id.tv})
+    public void mclick(View view) {
+        switch (view.getId()) {
+            case R.id.tv:
+                openActivity(OkHttpTestActivity.class);
+                break;
+        }
+    }
 
     @Override
     protected void addDataAgain() {

@@ -21,9 +21,7 @@ public class BasicFragment extends Fragment {
     public int getAddCount() {
         return addCount;
     }
-    public BasicActivity getBasicActivity(){
-        return (BasicActivity) getActivity();
-    }
+
 
     public void setAddCount(int addCount) {
         this.addCount = addCount;
