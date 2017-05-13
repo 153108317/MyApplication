@@ -3,14 +3,28 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
+    signingConfigs {
+        config {
+            keyAlias 'yh'
+            keyPassword '123456'
+            storeFile file(  'mykey.keystore')
+            storePassword '123456'
+            v1SigningEnabled false
+            v2SigningEnabled false
+        }
+    }
     productFlavors {
         my {
             signingConfig signingConfigs.config
         }
-        wandoujia {}
-        baidu {}
-        c360 {}
-        uc {}
+        wandoujia {
+            signingConfig signingConfigs.config
+        }
+        baidu {
+            signingConfig signingConfigs.config
+        }
+        c360 { signingConfig signingConfigs.config}
+        uc { signingConfig signingConfigs.config}
         productFlavors.all { flavor ->
             flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
@@ -38,16 +52,7 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    signingConfigs {
-        config {
-            keyAlias 'yh'
-            keyPassword '123456'
-            storeFile file(  'mykey.keystore')
-            storePassword '123456'
-            v1SigningEnabled false
-            v2SigningEnabled false
-        }
-    }
+
     buildTypes {
         release {
             minifyEnabled false
