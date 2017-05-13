@@ -10,9 +10,9 @@ public class UserBean  extends BasicResult {
 
     private DataEntity data;
 
-//    public DataEntity getData() {
-//        return data;
-//    }
+    public DataEntity getDataEntity() {
+        return data;
+    }
 
     public void setData(DataEntity data) {
         this.data = data;

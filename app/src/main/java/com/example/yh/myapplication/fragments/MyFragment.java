@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yh.myapplication.R;
+import com.example.yh.myapplication.activities.RetrofitHttpTestActivity;
 import com.example.yh.myapplication.base.BasicFragment;
 import com.example.yh.myapplication.presenter.PresenterTestBean;
 import com.example.yh.myapplication.entities.TestBean;
@@ -22,6 +23,7 @@ import com.example.yh.myapplication.views.IView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by yh on 2017/3/29.
@@ -72,6 +74,9 @@ public class MyFragment extends BasicFragment implements IView<TestBean>{
             }
         });
         presenterTestBean.getBitmap(imageUrl);
+    }
+    @OnClick(R.id.textview_my)public void mclick(View view){
+        getBasicActivity().openActivity(RetrofitHttpTestActivity.class);
     }
 
     @Override

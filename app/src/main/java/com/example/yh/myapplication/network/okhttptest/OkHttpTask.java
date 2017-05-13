@@ -55,8 +55,9 @@ public class OkHttpTask<T extends BasicResult> {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .cache(new Cache(sdcache.getAbsoluteFile(), cacheSize));
+                .readTimeout(20, TimeUnit.SECONDS);
+        if(requestBody!=null&&sdcache!=null){
+                builder.cache(new Cache(sdcache.getAbsoluteFile(), cacheSize));}
       //  OkHttpClient client = new OkHttpClient();
         OkHttpClient client = builder.build();
 

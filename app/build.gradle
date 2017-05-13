@@ -4,16 +4,16 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
     productFlavors {
-        my{}
+        my {
+            signingConfig signingConfigs.config
+        }
         wandoujia {}
         baidu {}
         c360 {}
         uc {}
-
         productFlavors.all { flavor ->
             flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
-
     }
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
