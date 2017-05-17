@@ -16,6 +16,8 @@ import com.example.yh.myapplication.R;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by yh on 2017/3/29.
  */
@@ -30,12 +32,16 @@ public abstract class BasicActivity extends FragmentActivity implements View.OnC
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_basic);
         mBasicActivity = this;
+        this.setContentView(getLayoutId());
+        ButterKnife.bind(this);
+        initView();
     }
 
+    protected abstract int getLayoutId();
     public ViewStub stubneterror;
     private ImageView mImageback;
     private ImageView mImageviewmsg;
-
+    protected abstract void initView();
     public void setContentView(int layoutId) {
         ViewStub stubtitle = (ViewStub) findViewById(R.id.viewstub_titlebar);
         ViewStub stubcontent = (ViewStub) findViewById(R.id.viewstub_content);
@@ -51,7 +57,6 @@ public abstract class BasicActivity extends FragmentActivity implements View.OnC
     }
     public void openActivity(Class<? extends Activity> activity) {
         openActivity(activity, null);
-
     }
 
     public void openActivity(Class<? extends Activity> activity, Bundle bundle) {
@@ -96,7 +101,6 @@ public abstract class BasicActivity extends FragmentActivity implements View.OnC
                 if (stubneterror == null) {
                     stubneterror = (ViewStub) findViewById(R.id.viewstub_net_error);
                     mLinearLayoutNetError = (LinearLayout) stubneterror.inflate();
-
                     mLinearLayoutNetError.setOnClickListener(this);
                 } else {
                     stubneterror.setVisibility(View.VISIBLE);
@@ -106,7 +110,6 @@ public abstract class BasicActivity extends FragmentActivity implements View.OnC
                 mLinearLayoutNetError.setVisibility(View.GONE);
                 addDataAgain();
                 break;
-
         }
     }
 }

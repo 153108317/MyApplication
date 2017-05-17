@@ -11,9 +11,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.BasicActivity;
 
 import java.util.HashMap;
+
+import butterknife.BindView;
 
 /**
  * Fixme
@@ -23,19 +26,27 @@ import java.util.HashMap;
  */
 
 public class WebViewActivity extends BasicActivity {
+    @BindView(R.id.webview) WebView mWebView;
     @Override
     protected void addDataAgain() {
 
     }
-    private WebView mWebView;
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mWebView = new WebView(this);
         setContentView(mWebView);
 
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_webview;
+    }
+
+    @Override
+    protected void initView() {
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 

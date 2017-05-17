@@ -6,12 +6,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by yh on 2017/3/29.
  */
 
-public class BasicFragment extends Fragment {
+public abstract class BasicFragment extends Fragment {
     private static final String HIDESTATE="fragmenthidestate";
     private int addCount;
     public BasicActivity getBasicActivity(){
@@ -44,6 +49,19 @@ public class BasicFragment extends Fragment {
 
         }
 
+    }
+    protected abstract int getLayoutId();
+    protected abstract void initView();
+    protected View v=null;
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (null==v){
+            v=inflater.inflate(getLayoutId(),container,false) ;
+        }
+        ButterKnife.bind(this,v);
+        initView();
+        return v;
     }
 
     @Override

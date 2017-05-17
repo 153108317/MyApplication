@@ -1,8 +1,6 @@
 package com.example.yh.myapplication.activities;
 
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -19,7 +17,6 @@ import com.example.yh.myapplication.fragments.PictureFragment1;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -38,10 +35,12 @@ public class PicturesActivity extends BasicActivity {
     int tabImag[];
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pictures);
-        ButterKnife.bind(this);
+    protected int getLayoutId() {
+        return R.layout.activity_pictures;
+    }
+
+    @Override
+    protected void initView() {
         int e = R.drawable.select_state;
         tabImag = new int[]{e, e, e};
         listFragments = new ArrayList<>();
@@ -73,12 +72,11 @@ public class PicturesActivity extends BasicActivity {
                             showFragment(listFragments.get(i), R.id.mframelayout);
                         }
                     }
-                   // iv.setClickable(true);
+                    // iv.setClickable(true);
 
                 }
             });
         }
-
     }
 
 

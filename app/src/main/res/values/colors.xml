@@ -5,4 +5,53 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorgray">#4e4e4e</color>
     <color name="appthemcolor">#ffffff</color>
+    <color name="main_background">#ffffff</color>
+    <color name="title_text_color">#DE000000</color>
+    <color name="tab_color">#de232427</color>
+    <color name="white">#ffffff</color>
+    <color name="edit_text_color">#333333</color>
+    <color name="gray">#BABABA</color>
+    <color name="transparent">#00000000</color>
+
+
+    <!--90%白色-->
+    <color name="trans_90_color_white">#e6ffffff</color>
+    <!--87%白色-->
+    <color name="trans_87_color_white">#deffffff</color>
+    <!--60%白色-->
+    <color name="trans_60_color_white">#b2ffffff</color>
+    <!--50%白色-->
+    <color name="trans_50_color_white">#80ffffff</color>
+    <!--40%白色-->
+    <color name="trans_40_color_white">#66ffffff</color>
+    <!--25%白色-->
+    <color name="trans_25_color_white">#40ffffff</color>
+    <!--20%白色-->
+    <color name="trans_20_color_white">#33ffffff</color>
+
+    <color name="transparent_white">#55ffffff</color>
+    <color name="transparent_white2">#80ffffff</color>
+    <color name="transparent_white3">#ccffffff</color>
+
+    <!--80%#767676黑色-->
+
+    <color name="trans_80_color_black2">#cc767676</color>
+    <!--87%黑色-->
+    <color name="trans_87_color_black">#de000000</color>
+    <!--80%黑色-->
+    <color name="trans_80_color_black">#cc000000</color>
+    <!--70%透明-->
+    <color name="trans_70_color_black">#b2000000</color>
+    <!--60%透明-->
+    <color name="trans_60_color_black">#b2000000</color>
+    <!--50%黑色-->
+    <color name="trans_50_color_black">#80000000</color>
+    <!--40%黑色-->
+    <color name="trans_40_color_black">#66000000</color>
+    <!--30%黑色-->
+    <color name="trans_30_color_black">#4c000000</color>
+    <!--20%黑色-->
+    <color name="trans_20_color_black">#33000000</color>
+    <!--13%黑色-->
+    <color name="trans_13_color_black">#21000000</color>
 </resources>

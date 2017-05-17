@@ -42,6 +42,7 @@ android {
     }
 
     defaultConfig {
+
         applicationId "com.example.yh.myapplication"
         minSdkVersion 15
         targetSdkVersion 25
@@ -51,8 +52,16 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{
+            moduleName "mndklib" //生成的.so的名字
+            abiFilters "armeabi","armeabi-v7a","x86"
+        }
     }
-
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -87,4 +96,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.7.0'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
 }

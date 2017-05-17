@@ -8,21 +8,18 @@ import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.activities.RetrofitHttpTestActivity;
 import com.example.yh.myapplication.base.BasicFragment;
-import com.example.yh.myapplication.presenter.PresenterTestBean;
 import com.example.yh.myapplication.entities.TestBean;
+import com.example.yh.myapplication.presenter.PresenterTestBean;
 import com.example.yh.myapplication.views.IView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -38,17 +35,14 @@ public class MyFragment extends BasicFragment implements IView<TestBean>{
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=null;
+    protected int getLayoutId() {
+        return R.layout.fragment_my;
+    }
 
-        if(v==null){
-            v=inflater.inflate(R.layout.fragment_my,container,false);
-        }
-        ButterKnife.bind(this,v);
-      return v;
-       // return super.onCreateView(inflater, container, savedInstanceState);
+    @Override
+    protected void initView() {
+
     }
 
     @Override

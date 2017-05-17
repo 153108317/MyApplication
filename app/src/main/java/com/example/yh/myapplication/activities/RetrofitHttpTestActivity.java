@@ -1,7 +1,5 @@
 package com.example.yh.myapplication.activities;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.widget.TextView;
 
 import com.example.yh.myapplication.R;
@@ -11,7 +9,6 @@ import com.example.yh.myapplication.entities.TestBean;
 import com.example.yh.myapplication.views.IView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Fixme
@@ -37,12 +34,13 @@ public class RetrofitHttpTestActivity extends BasicActivity implements IView <Te
 
     @BindView(R.id.mlabel)
     TextView mLabel;
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_okhttptest;
+    }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_okhttptest);
-        ButterKnife.bind(this);
+    protected void initView() {
         addDataAgain();
     }
 

@@ -1,9 +1,7 @@
 package com.example.yh.myapplication.activities;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.widget.TextView;
 
 import com.example.yh.myapplication.R;
@@ -15,7 +13,6 @@ import com.example.yh.myapplication.network.HttpUrls;
 import com.example.yh.myapplication.views.IView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
@@ -30,15 +27,15 @@ public class OkHttpTestActivity extends BasicActivity implements IView<TestBean>
     private OkHttpGetDataApi mOkHttpGetDataApi;
     @BindView(R.id.mlabel)
     TextView mLabel;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_okhttptest);
-        ButterKnife.bind(this);
-        addDataAgain();
+    protected int getLayoutId() {
+        return R.layout.activity_okhttptest;
     }
 
+    @Override
+    protected void initView() {
+        addDataAgain();
+    }
     @Override
     protected void addDataAgain() {
         if (mOkHttpGetDataApi == null)

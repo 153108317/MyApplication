@@ -7,9 +7,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.adapters.Picture1RecylerViewAdapter;
@@ -24,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Fixme
@@ -43,12 +39,14 @@ public class PicTureFragment2 extends BasicFragment implements IView<PictureResu
     private List<PictureBean> mList;
     private int orientation= LinearLayoutManager.HORIZONTAL;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.fatgment_picture1,container,false);
-        ButterKnife.bind(this,v);
-        return v;
+    protected int getLayoutId() {
+        return R.layout.fatgment_picture1;
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Override
