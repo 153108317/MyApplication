@@ -5,13 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.adapters.MyPagerAdapter;
 import com.example.yh.myapplication.base.BasicActivity;
 import com.example.yh.myapplication.fragments.Fragment1;
 import com.example.yh.myapplication.fragments.Fragment2;
 import com.example.yh.myapplication.fragments.Fragment3;
+import com.example.yh.myapplication.widget.PagerSlidingTabStrip;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,7 @@ import java.util.List;
 public class PagerSlidingTabStripActivity extends BasicActivity {
     private List<Fragment> mFragments;
     private List<String> mStrings;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,20 +36,22 @@ public class PagerSlidingTabStripActivity extends BasicActivity {
     protected int getLayoutId() {
         return R.layout.activity_pragerslidingtabstrip;
     }
-private MyPagerAdapter mMyPagerAdapter;
+
+    private MyPagerAdapter mMyPagerAdapter;
+
     @Override
     protected void initView() {
-        mFragments=new ArrayList<>();
+        mFragments = new ArrayList<>();
         mFragments.add(new Fragment1());
         mFragments.add(new Fragment2());
         mFragments.add(new Fragment3());
-        mStrings=new ArrayList<>();
+        mStrings = new ArrayList<>();
         mStrings.add("fragment1");
         mStrings.add("fragment2");
         mStrings.add("fragment3");
 // Initialize the ViewPager and set an adapter
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        mMyPagerAdapter=new MyPagerAdapter(getSupportFragmentManager(),mStrings,mFragments);
+        mMyPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), mStrings, mFragments);
         pager.setAdapter(mMyPagerAdapter);
 
 // Bind the tabs to the ViewPager

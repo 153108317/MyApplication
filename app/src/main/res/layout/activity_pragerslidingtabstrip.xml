@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-    <com.astuetz.PagerSlidingTabStrip
+    <com.example.yh.myapplication.widget.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="48dip"
+        app:zmsSelectedTabTextColor="@color/colorAccent"
+        app:pstsIndicatorColor="@color/transparent"
+        app:zmsUnSelectedTabTextColor="@color/trans_87_color_black"
+        app:pstsUnderlineColor="@color/transparent"
+        app:zmsSelecteTextTabSize="16sp"
+        app:zmsUnSelecteTextTabSize="12sp"
+
     />
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tabs"
         android:id="@+id/pager"
-    >
-
-    </android.support.v4.view.ViewPager>
-    <!--<com.example.yh.myapplication.widget.NoScrollViewPager-->
-        <!---->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/tabs">-->
-
-    <!--</com.example.yh.myapplication.widget.NoScrollViewPager>-->
-
+    />
 </RelativeLayout>
