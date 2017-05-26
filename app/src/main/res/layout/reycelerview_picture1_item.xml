@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              android:id="@+id/layout"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <TextView
+
+            android:id="@+id/_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"
+            android:textColor="@color/colorgray"/>
+        <TextView
+
+            android:id="@+id/who"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"
+            android:textColor="@color/colorgray"/>
+        <ImageView android:id="@+id/mimageview"
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@mipmap/ic_launcher"/>
+
+    </LinearLayout>
     <TextView
 
-        android:id="@+id/_id"
-        android:layout_width="wrap_content"
+        android:id="@+id/delete"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="text"
+        android:text="删除"
         android:textColor="@color/colorgray"/>
-    <TextView
-
-        android:id="@+id/who"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="text"
-        android:textColor="@color/colorgray"/>
-    <ImageView android:id="@+id/mimageview"
-               android:layout_width="100dp"
-               android:layout_height="100dp"
-               android:src="@mipmap/ic_launcher"/>
-
 </LinearLayout>

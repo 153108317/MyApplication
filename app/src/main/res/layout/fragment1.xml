@@ -5,6 +5,36 @@
               android:orientation="vertical">
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:id="@+id/fragment1"
               android:text="fragment1"/>
+    <in.srain.cube.views.ptr.PtrFrameLayout
+        android:id="@+id/lay_ptr_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/store_house_ptr_image_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tx_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/img_test"
+                android:layout_width="200dip"
+                android:layout_height="200dip"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="#ccc"
+                android:contentDescription="@string/app_name"/>
+
+        </LinearLayout>
+        <include layout="@layout/mrecyclerview"/>
+    </in.srain.cube.views.ptr.PtrFrameLayout>
 
 </LinearLayout>

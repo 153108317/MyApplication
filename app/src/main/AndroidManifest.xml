@@ -27,6 +27,8 @@
         <activity android:name=".activities.OkHttpTestActivity"/>
         <activity android:name=".activities.RetrofitHttpTestActivity"/>
         <activity android:name=".activities.PagerSlidingTabStripActivity"/>
+        <activity android:name=".activities.ItemRemoveRecyclerviewActivity"/>
+        <activity android:name=".activities.ScrollerActivity"/>
 
     </application>
 
