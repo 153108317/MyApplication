@@ -14,9 +14,10 @@ import android.widget.TextView;
 import com.example.yh.myapplication.R;
 import com.example.yh.myapplication.base.RecylerViewHolder;
 import com.example.yh.myapplication.interfaces.OnItemClickListener;
-import com.example.yh.myapplication.utils.Log;
+import com.example.yh.myapplication.utils.Utils;
 
-public class ItemRemoveRecyclerView extends RecyclerView {
+
+public class RemoveRecyclerView extends RecyclerView {
     private Context mContext;
 
     //上一次的触摸点
@@ -26,8 +27,10 @@ public class ItemRemoveRecyclerView extends RecyclerView {
 
     //item对应的布局
     private View mItemLayout;
-    //删除按钮
-    private TextView mDelete;
+    //滑动后显示的第一个按钮
+    private TextView mButton1;
+    //滑动后显示的第二个按钮
+    private TextView mButton2;
 
     //最大滑动距离(即删除按钮的宽度)
     private int mMaxLength;
@@ -45,16 +48,18 @@ public class ItemRemoveRecyclerView extends RecyclerView {
     private VelocityTracker mVelocityTracker;
     private Scroller mScroller;
     private OnItemClickListener mListener;
+    private String button1Content = "button1";
+    private String button2Content = "button2";
 
-    public ItemRemoveRecyclerView(Context context) {
+    public RemoveRecyclerView(Context context) {
         this(context, null);
     }
 
-    public ItemRemoveRecyclerView(Context context, @Nullable AttributeSet attrs) {
+    public RemoveRecyclerView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ItemRemoveRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+    public RemoveRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
 
@@ -63,7 +68,7 @@ public class ItemRemoveRecyclerView extends RecyclerView {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent e) {
+    public boolean onTouchEvent(MotionEvent e)  {
         mVelocityTracker.addMovement(e);
 
         int x = (int) e.getX();
@@ -82,14 +87,33 @@ public class ItemRemoveRecyclerView extends RecyclerView {
 
                     mPosition = viewHolder.getAdapterPosition();
 
-                    mDelete = viewHolder.getTextView(R.id.delete);
-                    Log.e("mDelete" + mDelete);
-                    mMaxLength = mDelete.getWidth();
-                    mDelete.setOnClickListener(new OnClickListener() {
+                    mButton1 = viewHolder.getTextView(R.id.button1);
+                    mButton2 = viewHolder.getTextView(R.id.button2);
+                    mMaxLength = viewHolder.getView(R.id.more_layout).getWidth();
+                    mButton1.setText(button1Content);
+                    mButton2.setText(button2Content);
+                    mButton1.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if (mListener != null)
-                                mListener.onDeleteClick(mPosition, "");
+                                try {
+                                    mListener.onDeleteClick(mPosition, 0);
+                                } catch (Exception e1) {
+                                    e1.printStackTrace();
+                                }
+                            mItemLayout.scrollTo(0, 0);
+                            mDeleteBtnState = 0;
+                        }
+                    });
+                    mButton2.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (mListener != null)
+                                try {
+                                    mListener.onDeleteClick(mPosition, 1);
+                                } catch (Exception e1) {
+                                    e1.printStackTrace();
+                                }
                             mItemLayout.scrollTo(0, 0);
                             mDeleteBtnState = 0;
                         }
@@ -122,7 +146,7 @@ public class ItemRemoveRecyclerView extends RecyclerView {
                 break;
             case MotionEvent.ACTION_UP:
                 if (!isItemMoving && !isDragging && mListener != null) {
-                    mListener.onItemClick(mItemLayout, mPosition, "");
+                    mListener.onItemClick(mItemLayout, mPosition);
                 }
                 isItemMoving = false;
 
@@ -195,5 +219,15 @@ public class ItemRemoveRecyclerView extends RecyclerView {
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
+    }
+
+    public void setButton1Content(String button1Content) {
+        if (Utils.isEmpty(button1Content)) return;
+        this.button1Content = button1Content;
+    }
+
+    public void setButton2Content(String button2Content) {
+        if (Utils.isEmpty(button2Content)) return;
+        this.button2Content = button2Content;
     }
 }

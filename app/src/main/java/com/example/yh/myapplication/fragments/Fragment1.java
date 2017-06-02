@@ -14,7 +14,7 @@ import com.example.yh.myapplication.network.HttpUrls;
 import com.example.yh.myapplication.result.PictureResult;
 import com.example.yh.myapplication.utils.PtrMDHeader;
 import com.example.yh.myapplication.views.IView;
-import com.example.yh.myapplication.widget.ItemRemoveRecyclerView;
+import com.example.yh.myapplication.widget.RemoveRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class Fragment1 extends BasicFragment implements IView<PictureResult> {
     @BindView(R.id.lay_ptr_frame)
     PtrFrameLayout lay_ptr_frame;
     @BindView(R.id.mrecylerview)
-    ItemRemoveRecyclerView mRecyclerView;
+    RemoveRecyclerView mRecyclerView;
     private List<PictureBean> mList;
     private Picture1RecylerViewAdapter mPicture1RecylerViewAdapter;
     @Override

@@ -33,8 +33,5 @@ public class RemoveRecyclerViewAdapter extends BasicRecylerViewAdapter<PictureBe
     public void delete(int position) {
         list.remove(position);
         notifyDataSetChanged();
-    } public void removeItem(int position) {
-        list.remove(position);
-        notifyDataSetChanged();
     }
 }

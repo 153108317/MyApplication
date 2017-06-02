@@ -1,5 +1,7 @@
 package com.example.yh.myapplication.entities;
 
+import android.graphics.Bitmap;
+
 import com.example.yh.myapplication.base.BasicResult;
 import com.example.yh.myapplication.result.Weatherinfo;
 
@@ -9,12 +11,13 @@ import java.util.List;
  * Created by yh on 2017/3/31.
  */
 
-public class TestBean extends BasicResult{
+public class TestBean extends BasicResult {
     private String title;
     private String content;
     private String url;
     private String imageurl;
     private List<TestBean> list;
+    public Bitmap mBitmap;
 
     public List<TestBean> getList() {
         return list;
@@ -33,7 +36,7 @@ public class TestBean extends BasicResult{
     }
 
     private int imgId;
-private Weatherinfo weatherinfo;
+    private Weatherinfo weatherinfo;
 
     public String getImageurl() {
         return imageurl;

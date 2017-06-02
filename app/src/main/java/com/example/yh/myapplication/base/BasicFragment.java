@@ -36,7 +36,8 @@ public abstract class BasicFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FragmentManager fm=getFragmentManager();
-
+//        RefWatcher refWatcher = MyApplication.refWatcher;
+//        refWatcher.watch(this);
         if(savedInstanceState!=null){
             FragmentTransaction ft=getFragmentManager().beginTransaction();
             Log.e("tag","HIDESTATE"+HIDESTATE);
