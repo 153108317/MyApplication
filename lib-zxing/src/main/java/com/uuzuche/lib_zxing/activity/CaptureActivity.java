@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.uuzuche.lib_zxing.R;
 
@@ -31,6 +32,7 @@ public class CaptureActivity extends AppCompatActivity {
     CodeUtils.AnalyzeCallback analyzeCallback = new CodeUtils.AnalyzeCallback() {
         @Override
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
+            Log.e("tag",result);
             Intent resultIntent = new Intent();
             Bundle bundle = new Bundle();
             bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_SUCCESS);
@@ -42,6 +44,7 @@ public class CaptureActivity extends AppCompatActivity {
 
         @Override
         public void onAnalyzeFailed() {
+            Log.e("tag","onAnalyzeFailed");
             Intent resultIntent = new Intent();
             Bundle bundle = new Bundle();
             bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_FAILED);

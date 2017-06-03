@@ -75,7 +75,7 @@ public class HomeFragment extends BasicFragment implements MyUser{
 
                   if(getBasicActivity().permissions(Manifest.permission.CAMERA)){
                       Intent intent=new Intent(MyApplication.mApplicationContext,CaptureActivity.class);
-                      getActivity().startActivityForResult(intent,SCANREQUESTCODE);
+                      startActivityForResult(intent,SCANREQUESTCODE);
                   }
 
              //   getBasicActivity().openActivity(CaptureActivity.class,SCANREQUESTCODE,null);
@@ -86,7 +86,9 @@ public class HomeFragment extends BasicFragment implements MyUser{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         switch (requestCode){
+
             case SCANREQUESTCODE:
                 //处理扫描结果（在界面上显示）
                 if (null != data) {
