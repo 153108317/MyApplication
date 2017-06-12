@@ -199,8 +199,7 @@ public class ItemRemoveRecyclerviewActivity extends BasicActivity implements IVi
                 @Override
                 public Bitmap apply(@NonNull String s) throws Exception {
                     Log.e("apply" + s);
-                    Bitmap bitmap = null;
-                    return Utils.getBitmap(imgUrl);
+                    return Utils.getBitmap(s);
                 }
             });
 

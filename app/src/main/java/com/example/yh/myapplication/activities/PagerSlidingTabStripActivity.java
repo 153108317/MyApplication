@@ -14,7 +14,9 @@ import com.example.yh.myapplication.fragments.Fragment3;
 import com.example.yh.myapplication.widget.PagerSlidingTabStrip;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Fixme
@@ -38,13 +40,16 @@ public class PagerSlidingTabStripActivity extends BasicActivity {
     }
 
     private MyPagerAdapter mMyPagerAdapter;
-
+    private  Fragment creat(Supplier<Fragment> supplier){
+        return  supplier.get();
+    }
     @Override
     protected void initView() {
-        mFragments = new ArrayList<>();
-        mFragments.add(new Fragment1());
-        mFragments.add(new Fragment2());
-        mFragments.add(new Fragment3());
+//        mFragments = new ArrayList<>();
+//        mFragments.add(new Fragment1());
+//        mFragments.add(new Fragment2());
+//        mFragments.add(new Fragment3());
+        mFragments= Arrays.asList(creat(Fragment1::new),creat(Fragment2::new),creat(Fragment3::new));
         mStrings = new ArrayList<>();
         mStrings.add("fragment1");
         mStrings.add("fragment2");
