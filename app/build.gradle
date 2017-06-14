@@ -115,4 +115,5 @@ dependencies {
     compile project(':lib-zxing')
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
     compile 'org.greenrobot:greendao:3.2.2'
+    compile 'com.wang.avi:library:2.1.3'
 }

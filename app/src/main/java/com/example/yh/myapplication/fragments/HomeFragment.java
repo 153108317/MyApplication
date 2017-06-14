@@ -69,32 +69,6 @@ public class HomeFragment extends BasicFragment implements MyUser {
 
     }
 
-    private void getShopData() {
-        if (mList == null) {
-            mList = new ArrayList<Shop>();
-            mShopAdapter = new ShopAdapter(mList, R.layout.item_shop);
-            mRecyclerView.setAdapter(mShopAdapter);
-
-        }
-        mList.clear();
-        mList.addAll(getDaoSession().getShopDao().loadAll()) ;
-        Log.e("" + mList.size());
-        if (!mList.isEmpty()) {
-            for (Shop shop : mList) {
-                Log.e("id" + shop.getId() + shop.getName());
-            }
-        }
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(manager);
-
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mShopAdapter.notifyDataSetChanged();
-            }
-        });
-    }
 
     @Override
     protected int getLayoutId() {
@@ -108,7 +82,7 @@ public class HomeFragment extends BasicFragment implements MyUser {
         label.setText(Html.fromHtml(str));
         str = String.format(getResources().getString(R.string.label_topical_name), "这是为什么");
         label1.setText(Html.fromHtml(str));
-        getShopData();
+        loadAll();
     }
 
     /**
@@ -206,19 +180,19 @@ public class HomeFragment extends BasicFragment implements MyUser {
                 if (shop1 != null) {
                     Log.e("shop1 id" + shop1.getId() + shop1.getName());
                     Utils.Toast("数据已存在");
-                }else{
-                getDaoSession().getShopDao().insert(shop);
+                } else {
+                    insert(shop);
                 }
-                getShopData();
+                loadAll();
                 break;
             case R.id.btn_edit:
                 if (!mList.isEmpty()) {
                     Shop shop2 = mList.get(0);
                     shop2.setName("我是修改后的名字");
-                    getDaoSession().getShopDao().insertOrReplace(shop2);
+                    insertOrReplace(shop2);
 
-                 //   getDaoSession().getShopDao().update(shop2);
-                    getShopData();
+                    //   getDaoSession().getShopDao().update(shop2);
+                    loadAll();
                 } else {
                     Utils.Toast("列表为空");
                     Shop shop4 = new Shop(index, "列表为空插入的数据" + index, "price" + index, (int) (1 + index)
@@ -230,23 +204,85 @@ public class HomeFragment extends BasicFragment implements MyUser {
                 break;
             case R.id.btn_delete:
                 index--;
-               // getDaoSession().getShopDao().deleteByKey(1l);
+                // getDaoSession().delete();
+                // getDaoSession().getShopDao().deleteByKey(1l);
                 if (!mList.isEmpty()) {
                     Shop shop3 = mList.get(0);
                     shop3.setName("我是修改后的名字");
 
-                   getDaoSession().getShopDao().delete(shop3);
-                    getShopData();
+                    delete(shop3);
+                    loadAll();
                 } else {
                     Utils.Toast("列表为空");
                 }
                 break;
             case R.id.btn_query:
-                getShopData();
+                loadAll();
                 break;
         }
     }
 
+    /**
+     * 删除
+     */
+    private void delete(Shop shop3) {
+       // getDaoSession().getShopDao().delete(shop3);
+        getDaoSession().delete(shop3);
+    }
+
+    /**
+     * 删除
+     */
+    private void deleteById(Long id) {
+        getDaoSession().getShopDao().deleteByKey(id);
+    }
+
+    /**
+     * 插入或修改
+     */
+    private long insertOrReplace(Shop shop2) {
+        //return getDaoSession().getShopDao().insertOrReplace(shop2);
+        return getDaoSession().insertOrReplace(shop2);
+    }
+
+    /**
+     * 插入
+     */
+    private void insert(Shop shop) {
+       // getDaoSession().getShopDao().insert(shop);
+        getDaoSession().insert(shop);
+    }
+
+    /**
+     * 查询所有
+     */
+    private void loadAll() {
+        if (mList == null) {
+            mList = new ArrayList<Shop>();
+            mShopAdapter = new ShopAdapter(mList, R.layout.item_shop);
+            mRecyclerView.setAdapter(mShopAdapter);
+
+        }
+        mList.clear();
+      //  mList.addAll(getDaoSession().getShopDao().loadAll());
+        mList.addAll(getDaoSession().loadAll(Shop.class));
+        Log.e("" + mList.size());
+        if (!mList.isEmpty()) {
+            for (Shop shop : mList) {
+                Log.e("id" + shop.getId() + shop.getName());
+            }
+        }
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(manager);
+
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mShopAdapter.notifyDataSetChanged();
+            }
+        });
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
