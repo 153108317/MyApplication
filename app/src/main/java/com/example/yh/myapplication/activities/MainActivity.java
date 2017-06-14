@@ -2,6 +2,7 @@ package com.example.yh.myapplication.activities;
 
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioButton;
@@ -43,6 +44,9 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
     @Override
     protected void initView() {
         mHomeRadioGroup.setOnCheckedChangeListener(this);
+        setRadioButton(0,R.drawable.drawable_home);
+        setRadioButton(1,R.drawable.drawable_home);
+        setRadioButton(2,R.drawable.drawable_home);
         ActivityInfo info = null;
         try {
             info = getPackageManager().getActivityInfo(getComponentName(), PackageManager.GET_META_DATA);
@@ -102,7 +106,16 @@ public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedC
         }
         ft.commit();
     }
+    private void setRadioButton(int i, int drawableId) {
+        RadioButton rb = (RadioButton) mHomeRadioGroup.getChildAt(i);
 
+        int width = (int) getResources().getDimension(R.dimen.dp_30);
+        Drawable d = getResources().getDrawable(drawableId);
+        d.setBounds(0, 0, width, width);
+        // rb.setCompoundDrawablesWithIntrinsicBounds(null, d, null, null);
+        rb.setCompoundDrawables(null, d, null, null);
+
+    }
     public void onEventMainThread(MyEvent event) {
         String msg = "onEventMainThread收到了消息：" + event.getMsg();
         Log.e(msg);
