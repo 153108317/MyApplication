@@ -14,20 +14,7 @@ android {
         }
     }
     productFlavors {
-        my {
-            signingConfig signingConfigs.config
-        }
-        wandoujia {
-            signingConfig signingConfigs.config
-        }
-        baidu {
-            signingConfig signingConfigs.config
-        }
-        c360 { signingConfig signingConfigs.config }
-        uc { signingConfig signingConfigs.config }
-        productFlavors.all { flavor ->
-            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-        }
+
     }
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -35,7 +22,7 @@ android {
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
 
                 // 输出apk名称为appName_v1.0.apk
-                def fileName = "myapplication_${variant.productFlavors[0].name}_v${defaultConfig.versionName}.apk"
+                def fileName = "myapplication__v${defaultConfig.versionName}.apk"
                 output.outputFile = new File(outputFile.parent, fileName)
             }
         }
@@ -45,13 +32,11 @@ android {
         targetCompatibility 1.8
     }
     defaultConfig {
-
         applicationId "com.example.yh.myapplication"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-
         multiDexEnabled true
         jackOptions {
             enabled true
@@ -61,6 +46,7 @@ android {
             moduleName "mndklib" //生成的.so的名字
             abiFilters "armeabi", "armeabi-v7a", "x86"
         }
+        signingConfig signingConfigs.config
     }
     sourceSets {
         main {

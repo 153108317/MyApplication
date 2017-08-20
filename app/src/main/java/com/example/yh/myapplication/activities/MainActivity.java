@@ -4,7 +4,9 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -21,7 +23,7 @@ import butterknife.BindView;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import de.greenrobot.event.ThreadMode;
-
+//branche2
 public class MainActivity extends BasicActivity implements RadioGroup.OnCheckedChangeListener {
     @BindView(R.id.home_radiobutton)
     RadioButton mHOmeRadioButton;

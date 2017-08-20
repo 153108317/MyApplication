@@ -26,9 +26,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <meta-data
-                android:name="yh"
-                android:value="${UMENG_CHANNEL_VALUE}" />
+
         </activity>
         <activity android:name=".activities.PicturesActivity"></activity>
         <activity android:name=".activities.WebViewActivity"></activity>
